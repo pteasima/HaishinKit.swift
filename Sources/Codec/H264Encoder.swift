@@ -240,7 +240,7 @@ public final class H264Encoder {
         }
     }
 
-    init() {
+    public init() {
         settings.observer = self
     }
 
