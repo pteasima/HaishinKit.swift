@@ -96,9 +96,6 @@ final class RTMPNWSocket: RTMPSocketCompatible {
             doOutput(data: chunks[i])
         }
         doOutput(data: chunks.last!, locked: locked)
-        if logger.isEnabledFor(level: .trace) {
-            logger.trace(chunk)
-        }
         return chunk.message!.length
     }
 

@@ -1,9 +1,9 @@
 import AVFoundation
 import HaishinKit
-import Logboard
+//import Logboard
 import UIKit
 
-let logger = Logboard.with("com.haishinkit.Exsample.iOS")
+//let logger = Logboard.with("com.haishinkit.Exsample.iOS")
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {

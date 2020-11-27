@@ -21,7 +21,7 @@ open class NetSocket: NSObject {
         private var data: Data
         private var capacity: Int = 0 {
             didSet {
-                logger.info("extends a buffer size from ", oldValue, " to ", capacity)
+                
             }
         }
         private var top: Int = 0
@@ -223,7 +223,7 @@ open class NetSocket: NSObject {
         outputStream?.close()
         outputStream = nil
         connected = false
-        logger.trace("isDisconnected: \(isDisconnected)")
+        
     }
 
     func didTimeout() {

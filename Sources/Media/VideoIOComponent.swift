@@ -93,7 +93,7 @@ final class VideoIOComponent: IOComponent {
 
             fps = data.fps
             encoder.expectedFPS = data.fps
-            logger.info("\(data)")
+            
 
             do {
                 try device.lockForConfiguration()
@@ -101,7 +101,7 @@ final class VideoIOComponent: IOComponent {
                 device.activeVideoMaxFrameDuration = data.duration
                 device.unlockForConfiguration()
             } catch let error as NSError {
-                logger.error("while locking device for fps: \(error)")
+              
             }
         }
     }
@@ -160,7 +160,7 @@ final class VideoIOComponent: IOComponent {
             let focusMode: AVCaptureDevice.FocusMode = continuousAutofocus ? .continuousAutoFocus : .autoFocus
             guard let device: AVCaptureDevice = (input as? AVCaptureDeviceInput)?.device,
                 device.isFocusModeSupported(focusMode) else {
-                    logger.warn("focusMode(\(focusMode.rawValue)) is not supported")
+        
                     return
             }
             do {
@@ -168,7 +168,7 @@ final class VideoIOComponent: IOComponent {
                 device.focusMode = focusMode
                 device.unlockForConfiguration()
             } catch let error as NSError {
-                logger.error("while locking device for autofocus: \(error)")
+              
             }
         }
     }
@@ -187,7 +187,7 @@ final class VideoIOComponent: IOComponent {
                 device.focusMode = .continuousAutoFocus
                 device.unlockForConfiguration()
             } catch let error as NSError {
-                logger.error("while locking device for focusPointOfInterest: \(error)")
+    
             }
         }
     }
@@ -206,7 +206,7 @@ final class VideoIOComponent: IOComponent {
                 device.exposureMode = .continuousAutoExposure
                 device.unlockForConfiguration()
             } catch let error as NSError {
-                logger.error("while locking device for exposurePointOfInterest: \(error)")
+       
             }
         }
     }
@@ -219,7 +219,7 @@ final class VideoIOComponent: IOComponent {
             let exposureMode: AVCaptureDevice.ExposureMode = continuousExposure ? .continuousAutoExposure : .autoExpose
             guard let device: AVCaptureDevice = (input as? AVCaptureDeviceInput)?.device,
                 device.isExposureModeSupported(exposureMode) else {
-                    logger.warn("exposureMode(\(exposureMode.rawValue)) is not supported")
+                  
                     return
             }
             do {
@@ -227,7 +227,7 @@ final class VideoIOComponent: IOComponent {
                 device.exposureMode = exposureMode
                 device.unlockForConfiguration()
             } catch let error as NSError {
-                logger.error("while locking device for autoexpose: \(error)")
+                
             }
         }
     }
@@ -348,7 +348,7 @@ final class VideoIOComponent: IOComponent {
 
     func setTorchMode(_ torchMode: AVCaptureDevice.TorchMode) {
         guard let device: AVCaptureDevice = (input as? AVCaptureDeviceInput)?.device, device.isTorchModeSupported(torchMode) else {
-            logger.warn("torchMode(\(torchMode)) is not supported")
+     
             return
         }
         do {
@@ -356,7 +356,7 @@ final class VideoIOComponent: IOComponent {
             device.torchMode = torchMode
             device.unlockForConfiguration()
         } catch let error as NSError {
-            logger.error("while setting torch: \(error)")
+        
         }
     }
 

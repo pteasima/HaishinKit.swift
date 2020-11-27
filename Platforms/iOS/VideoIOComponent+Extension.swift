@@ -24,7 +24,7 @@ extension VideoIOComponent {
             }
             device.unlockForConfiguration()
         } catch let error as NSError {
-            logger.error("while locking device for ramp: \(error)")
+           
         }
     }
 
@@ -58,7 +58,7 @@ extension VideoIOComponent: ScreenCaptureOutputPixelBufferDelegate {
             // usually the context comes from HKView or MTLHKView
             // but if you have not attached a view then the context is nil
             if context == nil {
-                logger.info("no ci context, creating one to render effect")
+           
                 context = CIContext()
             }
             context?.render(effect(pixelBuffer, info: nil), to: pixelBuffer)

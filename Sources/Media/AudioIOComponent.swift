@@ -47,7 +47,7 @@ final class AudioIOComponent: IOComponent, DisplayLinkedQueueClockReference {
             nstry({
                 audioEngine.connect(self.playerNode, to: audioEngine.mainMixerNode, format: audioFormat)
             }, { exeption in
-                logger.warn(exeption)
+
             })
             do {
                 try audioEngine.start()
@@ -55,7 +55,7 @@ final class AudioIOComponent: IOComponent, DisplayLinkedQueueClockReference {
                     playerNode.play()
                 }
             } catch {
-                logger.warn(error)
+
             }
         }
     }
@@ -230,7 +230,7 @@ extension AudioIOComponent: AudioConverterDelegate {
                 self.playerNode.play()
             }
         }, { exeption in
-            logger.warn(exeption)
+
         })
     }
 

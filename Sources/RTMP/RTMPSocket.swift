@@ -44,9 +44,7 @@ final class RTMPSocket: NetSocket, RTMPSocketCompatible {
             doOutput(data: chunks[i])
         }
         doOutput(data: chunks.last!, locked: locked)
-        if logger.isEnabledFor(level: .trace) {
-            logger.trace(chunk)
-        }
+        
         return chunk.message!.length
     }
 
@@ -101,6 +99,6 @@ final class RTMPSocket: NetSocket, RTMPSocketCompatible {
     override func didTimeout() {
         deinitConnection(isDisconnected: false)
         delegate?.dispatch(.ioError, bubbles: false, data: nil)
-        logger.warn("connection timedout")
+        
     }
 }

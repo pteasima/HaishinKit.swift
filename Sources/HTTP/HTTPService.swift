@@ -189,9 +189,7 @@ open class HTTPService: NetService {
             return
         }
         client.inputBuffer.removeAll()
-        if logger.isEnabledFor(level: .trace) {
-            logger.trace("\(request): \(self)")
-        }
+     
         switch request.method {
         case "GET":
             get(request, client: client)
@@ -271,7 +269,7 @@ open class HLSService: HTTPService {
     }
 
     override open func get(_ request: HTTPRequest, client: NetClient) {
-        logger.trace("\(request)")
+      
         var response: HTTPResponse = [
             // #141
             "Access-Control-Allow-Headers": "*",
@@ -282,7 +280,7 @@ open class HLSService: HTTPService {
         ]
 
         defer {
-            logger.trace("\(response)")
+    
             disconnect(client)
         }
 
@@ -334,7 +332,6 @@ open class HLSService: HTTPService {
                 client.doOutput(data: fileHandle.readData(ofLength: remain))
             }
         } catch let error as NSError {
-            logger.error("\(error)")
         }
     }
 }

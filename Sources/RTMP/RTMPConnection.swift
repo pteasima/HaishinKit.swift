@@ -377,7 +377,7 @@ open class RTMPConnection: EventDispatcher {
             }
         case .some(.connectClosed):
             if let description: String = data["description"] as? String {
-                logger.warn(description)
+                print(description)
             }
             close(isDisconnected: true)
         default:
@@ -459,7 +459,7 @@ open class RTMPConnection: EventDispatcher {
 extension RTMPConnection: RTMPSocketDelegate {
     // MARK: RTMPSocketDelegate
     func didSetReadyState(_ readyState: RTMPSocketReadyState) {
-        logger.debug(readyState)
+        print(readyState)
         switch readyState {
         case .handshakeDone:
             guard let chunk: RTMPChunk = makeConnectionChunk() else {
@@ -516,9 +516,7 @@ extension RTMPConnection: RTMPSocketDelegate {
         }
 
         if let message: RTMPMessage = chunk.message, chunk.ready {
-            if logger.isEnabledFor(level: .trace) {
-                logger.trace(chunk)
-            }
+            
             switch chunk.type {
             case .zero:
                 streamsmap[chunk.streamId] = message.streamId

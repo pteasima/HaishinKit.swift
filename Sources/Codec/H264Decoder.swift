@@ -56,7 +56,7 @@ final class H264Decoder {
     private(set) var status: OSStatus = noErr {
         didSet {
             if status != noErr {
-                logger.warn("\(self.status)")
+
             }
         }
     }

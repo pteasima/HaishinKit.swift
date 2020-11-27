@@ -120,7 +120,7 @@ extension ProgramSpecific: DataConvertible {
                 tableData = try buffer.readBytes(Int(sectionLength - 9))
                 crc32 = try buffer.readUInt32()
             } catch {
-                logger.error("\(buffer)")
+               print("\(buffer)")
             }
         }
     }
@@ -154,7 +154,7 @@ final class ProgramAssociationSpecific: ProgramSpecific {
                     programs[try buffer.readUInt16()] = try buffer.readUInt16() & 0x1fff
                 }
             } catch {
-                logger.error("\(buffer)")
+                print("\(buffer)")
             }
         }
     }
@@ -210,7 +210,7 @@ final class ProgramMapSpecific: ProgramSpecific {
                     elementaryStreamSpecificData.append(data)
                 }
             } catch {
-                logger.error("\(buffer)")
+                print("\(buffer)")
             }
         }
     }
@@ -268,7 +268,7 @@ extension ElementaryStreamSpecificData: DataConvertible {
                 ESInfoLength = try buffer.readUInt16() & 0x01ff
                 ESDescriptors = try buffer.readBytes(Int(ESInfoLength))
             } catch {
-                logger.error("\(buffer)")
+                print("\(buffer)")
             }
         }
     }

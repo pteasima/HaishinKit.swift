@@ -1,12 +1,12 @@
 import Cocoa
 import HaishinKit
-import Logboard
+//import Logboard
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        Logboard.with(HaishinKitIdentifier).level = .info
+//        Logboard.with(HaishinKitIdentifier).level = .info
     }
 }

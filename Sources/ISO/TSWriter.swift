@@ -326,7 +326,7 @@ public class TSFileWriter: TSWriter {
             do {
                 try fileManager.createDirectory(atPath: temp, withIntermediateDirectories: false, attributes: nil)
             } catch let error as NSError {
-                logger.warn("\(error)")
+                print("\(error)")
             }
         }
 
@@ -344,7 +344,7 @@ public class TSFileWriter: TSWriter {
             do {
                 try fileManager.removeItem(at: info.url as URL)
             } catch let e as NSError {
-                logger.warn("\(e)")
+                print("\(e)")
             }
         }
         currentFileURL = url
@@ -354,7 +354,7 @@ public class TSFileWriter: TSWriter {
         nstry({
             self.currentFileHandle?.synchronizeFile()
         }, { exeption in
-            logger.warn("\(exeption)")
+            print("\(exeption)")
         })
 
         currentFileHandle?.closeFile()
@@ -369,7 +369,7 @@ public class TSFileWriter: TSWriter {
             self.currentFileHandle?.write(data)
         }, { exception in
             self.currentFileHandle?.write(data)
-            logger.warn("\(exception)")
+            print("\(exception)")
         })
         super.write(data)
     }
@@ -394,7 +394,7 @@ public class TSFileWriter: TSWriter {
             do {
                 try fileManager.removeItem(at: info.url as URL)
             } catch let e as NSError {
-                logger.warn("\(e)")
+                print("\(e)")
             }
         }
         files.removeAll()

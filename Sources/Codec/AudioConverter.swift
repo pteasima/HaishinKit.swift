@@ -69,7 +69,7 @@ public class AudioConverter {
     var sampleRate: Double = AudioConverter.defaultSampleRate
     var actualBitrate: UInt32 = AudioConverter.defaultBitrate {
         didSet {
-            logger.info(actualBitrate)
+//            logger.info(actualBitrate)
         }
     }
     var channels: UInt32 = AudioConverter.defaultChannels
@@ -78,7 +78,7 @@ public class AudioConverter {
             guard !CMFormatDescriptionEqual(formatDescription, otherFormatDescription: oldValue) else {
                 return
             }
-            logger.info(formatDescription.debugDescription)
+//            logger.info(formatDescription.debugDescription)
             delegate?.didSetFormatDescription(audio: formatDescription)
         }
     }
@@ -91,7 +91,7 @@ public class AudioConverter {
             _converter = nil
             formatDescription = nil
             _inDestinationFormat = nil
-            logger.info("\(String(describing: inSourceFormat))")
+            
             let nonInterleaved = inSourceFormat.mFormatFlags & kAudioFormatFlagIsNonInterleaved != 0
             maximumBuffers = nonInterleaved ? Int(inSourceFormat.mChannelsPerFrame) : AudioConverter.defaultMaximumBuffers
             currentAudioBuffer = AudioBuffer(inSourceFormat, numSamples: AudioConverter.numSamples)
@@ -158,7 +158,7 @@ public class AudioConverter {
             setBitrateUntilNoErr(bitrate * inDestinationFormat.mChannelsPerFrame)
         }
         if status != noErr {
-            logger.warn("\(status)")
+         //   logger.warn("\(status)")
         }
         return _converter!
     }
@@ -195,7 +195,7 @@ public class AudioConverter {
                 encodeSampleBuffer(sampleBuffer, offset: offset + numSamples)
             }
         } catch {
-            logger.error(error)
+            //logger.error(error)
         }
     }
 

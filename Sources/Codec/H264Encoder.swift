@@ -196,7 +196,7 @@ public final class H264Encoder {
             let sampleBuffer: CMSampleBuffer = sampleBuffer, status == noErr else {
                 if status == kVTParameterErr {
                     // on iphone 11 with size=1792x827 this occurs
-                    logger.error("encoding failed with kVTParameterErr. Perhaps the width x height is too big for the encoder setup?")
+                    print("encoding failed with kVTParameterErr. Perhaps the width x height is too big for the encoder setup?")
                 }
             return
         }
@@ -221,14 +221,14 @@ public final class H264Encoder {
                     refcon: Unmanaged.passUnretained(self).toOpaque(),
                     compressionSessionOut: &_session
                     ) == noErr, let session = _session else {
-                    logger.warn("create a VTCompressionSessionCreate")
+                    print("create a VTCompressionSessionCreate")
                     return nil
                 }
                 invalidateSession = false
                 status = session.setProperties(properties)
                 status = session.prepareToEncodeFrame()
                 guard status == noErr else {
-                    logger.error("setup failed VTCompressionSessionPrepareToEncodeFrames. Size = \(width)x\(height)")
+                    print("setup failed VTCompressionSessionPrepareToEncodeFrames. Size = \(width)x\(height)")
                     return nil
                 }
             }
