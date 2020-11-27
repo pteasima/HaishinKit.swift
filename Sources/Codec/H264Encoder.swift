@@ -244,7 +244,7 @@ public final class H264Encoder {
         settings.observer = self
     }
 
-    func encodeImageBuffer(_ imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime) {
+    public func encodeImageBuffer(_ imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime) {
         guard isRunning.value && locked == 0 else {
             return
         }
