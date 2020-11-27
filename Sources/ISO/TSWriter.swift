@@ -54,19 +54,21 @@ public class TSWriter: Running {
     private var audioTimestamp: CMTime = .invalid
     private var PCRTimestamp = CMTime.zero
     private var canWriteFor: Bool {
-        guard expectedMedias.isEmpty else {
-            return true
-        }
-        if expectedMedias.contains(.audio) && expectedMedias.contains(.video) {
-            return audioConfig != nil && videoConfig != nil
-        }
-        if expectedMedias.contains(.video) {
-            return videoConfig != nil
-        }
-        if expectedMedias.contains(.audio) {
-            return audioConfig != nil
-        }
-        return false
+      true
+      //empty -> false, non-empty -> true, other conditions make no sense. I suspect guard should be negated, but its been in the library for 2 years so wtf
+//        guard expectedMedias.isEmpty else {
+//            return true
+//        }
+//        if expectedMedias.contains(.audio) && expectedMedias.contains(.video) {
+//            return audioConfig != nil && videoConfig != nil
+//        }
+//        if expectedMedias.contains(.video) {
+//            return videoConfig != nil
+//        }
+//        if expectedMedias.contains(.audio) {
+//            return audioConfig != nil
+//        }
+//        return false
     }
 
     public init(segmentDuration: Double = TSWriter.defaultSegmentDuration) {
