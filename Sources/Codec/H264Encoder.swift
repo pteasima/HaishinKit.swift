@@ -151,7 +151,7 @@ public final class H264Encoder {
             delegate?.didSetFormatDescription(video: formatDescription)
         }
     }
-    weak var delegate: VideoEncoderDelegate?
+    public weak var delegate: VideoEncoderDelegate?
 
     private(set) var status: OSStatus = noErr
     private var attributes: [NSString: AnyObject] {
