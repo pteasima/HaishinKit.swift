@@ -290,7 +290,7 @@ public class TSFileWriter: TSWriter {
     private var currentFileURL: URL?
     private var sequence: Int = 0
 
-    var playlist: String {
+    public var playlist: String {
         var m3u8 = M3U()
         m3u8.targetDuration = segmentDuration
         if sequence <= TSFileWriter.defaultSegmentMaxCount {
