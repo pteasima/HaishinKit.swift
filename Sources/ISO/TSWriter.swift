@@ -31,7 +31,7 @@ public class TSWriter: Running {
     var videoContinuityCounter: UInt8 = 0
     var PCRPID: UInt16 = TSWriter.defaultVideoPID
     var rotatedTimestamp = CMTime.zero
-    var segmentDuration: Double = TSWriter.defaultSegmentDuration
+    public var segmentDuration: Double = TSWriter.defaultSegmentDuration
     let lockQueue = DispatchQueue(label: "com.haishinkit.HaishinKit.TSWriter.lock")
 
     private(set) var PAT: ProgramAssociationSpecific = {
